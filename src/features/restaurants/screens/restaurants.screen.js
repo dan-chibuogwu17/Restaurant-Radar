@@ -7,19 +7,19 @@ import styled from "styled-components";
 const SafeArea = styled.SafeAreaView`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const SearchContainer = styled.View`
-  margin: 16px;
-  background-color: white;
+  margin: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.primary};
   box-shadow: 2px 4px 7px lightgrey;
 `;
 
 const SearchListContainer = styled.View`
   flex: 1;
-  padding: 16px;
-  background-color: #eaeaea;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.ui.disabled};
 `;
 
 export const RestaurantsScreen = () => {
