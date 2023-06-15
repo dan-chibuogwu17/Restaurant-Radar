@@ -1,5 +1,9 @@
 import { Card } from "react-native-paper";
 import styled from "styled-components";
+import { SvgXml } from "react-native-svg";
+import Star from "../../../../assets/Star";
+import Open from "../../../../assets/Open";
+import { View, Text, Image } from "react-native";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -11,11 +15,10 @@ const RestaurantCardCover = styled(Card.Cover)`
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
-const { Text } = styled;
-const Title = Text`
+const Title = styled.Text`
   font-family: ${(props) => props.theme.fonts.heading};
   font-size: ${(props) => props.theme.fontSizes.body};
-  color: ${(props) => props.theme.colors.ui.primary}
+  color: ${(props) => props.theme.colors.ui.primary};
 `;
 
 const Info = styled.View`
@@ -26,24 +29,57 @@ const Address = styled.Text`
   font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fontSizes.caption};
 `;
+
+const Rating = styled.View`
+  flex-direction: row;
+`;
+const Section = styled.View`
+  flex-direction: row;
+  padding: ${(props) => props.theme.space[2]} 0;
+  justify-content: space-between;
+`;
+const SectionEnd = styled.View`
+  flex-direction: row;
+`;
+
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Chillings",
-    icon,
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = [
       "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     ],
     address = "10, Festac Town, Lagos",
-    openingHours = true,
+    isOPenNOw = true,
     rating = 4,
-    isClosedTemporarily,
+    isClosedTemporarily = true,
   } = restaurant;
 
+  const ratingArray = Array(Math.floor(rating)).fill(null);
   return (
     <RestaurantCard elevation={0}>
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <Title>{name}</Title>
+        <Section>
+          <Rating>
+            {ratingArray.map(() => (
+              <SvgXml xml={Star} height={20} width={20} />
+            ))}
+          </Rating>
+          <SectionEnd>
+            {isClosedTemporarily && (
+              <Text variant="label" style={{ color: "red" }}>
+                CLOSED TEMPORARILY
+              </Text>
+            )}
+            <View style={{ paddingLeft: 16 }} />
+            {isOPenNOw && <SvgXml xml={Open} height={20} width={20} />}
+            <View style={{ paddingLeft: 16 }} />
+            <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+          </SectionEnd>
+        </Section>
+
         <Address>{address}</Address>
       </Info>
     </RestaurantCard>
