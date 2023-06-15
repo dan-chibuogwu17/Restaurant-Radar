@@ -19,7 +19,7 @@ const SearchContainer = styled.View`
 const SearchListContainer = styled.View`
   flex: 1;
   padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.ui.disabled};
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 export const RestaurantsScreen = () => {
