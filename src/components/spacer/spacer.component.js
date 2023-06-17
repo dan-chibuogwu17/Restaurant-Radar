@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 
 const positionVariants = {
   top: "margin-top",
@@ -20,9 +20,14 @@ const getVariant = (position, size, theme) => {
   return `${property}:${spacing}`;
 };
 
-export const Spacer = styled.View`
-  ${({ position, size, theme }) => getVariant(position, size, theme)}}
+const SpacerView = styled.View`
+  ${({ variant }) => variant}
 `;
+export const Spacer = ({ position, size, children }) => {
+  const theme = useTheme();
+  const variant = getVariant(position, size, theme);
+  return <SpacerView variant={variant}>{children}</SpacerView>;
+};
 
 Spacer.defaulProps = {
   position: "top",

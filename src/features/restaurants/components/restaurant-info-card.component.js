@@ -9,7 +9,6 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
   padding: ${(props) => props.theme.space[3]};
-  box-shadow: 2px 4px 7px lightgrey;
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
@@ -58,14 +57,14 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   const ratingArray = Array(Math.floor(rating)).fill(null);
   return (
-    <RestaurantCard elevation={0}>
+    <RestaurantCard elevation={1}>
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <Title>{name}</Title>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={Star} height={20} width={20} />
+            {ratingArray.map((_, i) => (
+              <SvgXml key={i} xml={Star} height={20} width={20} />
             ))}
           </Rating>
           <SectionEnd>
