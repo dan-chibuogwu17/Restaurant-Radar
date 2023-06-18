@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StatusBar } from "react-native";
+import { StatusBar, StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components/native";
@@ -29,9 +29,7 @@ export const RestaurantsScreen = () => {
           onChangeText={onChangeSearch}
           value={searchQuery}
           elevation={2}
-          style={{
-            backgroundColor: "#fff",
-          }}
+          style={styles.searchBar}
         />
       </SearchContainer>
       <RestaurantListContainer>
@@ -40,3 +38,9 @@ export const RestaurantsScreen = () => {
     </SafeArea>
   );
 };
+
+const styles = StyleSheet.create({
+  searchBar: {
+    backgroundColor: "#FFFFFF",
+  },
+});
