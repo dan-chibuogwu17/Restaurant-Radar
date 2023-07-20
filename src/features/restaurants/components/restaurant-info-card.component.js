@@ -21,7 +21,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     ],
     address = "10, Festac Town, Lagos",
-    isOPenNOw = true,
+    isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
   } = restaurant;
@@ -43,7 +43,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
             <Spacer position="left" size="large">
-              {isOPenNOw && <SvgXml xml={OpenIcon} height={20} width={20} />}
+              {isOpenNow && <SvgXml xml={OpenIcon} height={20} width={20} />}
             </Spacer>
             <Spacer position="left" size="large">
               <Icon source={{ uri: icon }} />
