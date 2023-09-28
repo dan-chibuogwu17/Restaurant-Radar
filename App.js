@@ -7,17 +7,17 @@ import { SafeArea } from "./src/components/utility/safe-area.component";
 import { Ionicons } from "@expo/vector-icons";
 
 import {
-  useFonts as useOswaldFonts,
   Oswald_400Regular,
+  useFonts as useOswaldFonts,
 } from "@expo-google-fonts/oswald";
 import {
-  useFonts as useLatoFonts,
   Lato_400Regular,
+  useFonts as useLatoFonts,
 } from "@expo-google-fonts/lato";
 
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 
@@ -32,6 +32,7 @@ function MapsScreen() {
     </SafeArea>
   );
 }
+
 function SettingsScreen() {
   return (
     <SafeArea>
